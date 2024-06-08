@@ -3,7 +3,7 @@ package com.example.effectivejava.chapter3.hashcode;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class PhoneNumber {
+public final class PhoneNumber implements Cloneable {
     private final short areaCode, prefix, lineNum;
 
     public PhoneNumber(int areaCode, int prefix, int lineNum) {
@@ -19,22 +19,22 @@ public final class PhoneNumber {
         return (short) val;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof PhoneNumber)) {
-            return false;
-        }
-        PhoneNumber phoneNumber = (PhoneNumber) obj;
-        return phoneNumber.lineNum == lineNum && phoneNumber.prefix == prefix && phoneNumber.areaCode == areaCode;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (obj == this) {
+//            return true;
+//        }
+//        if (!(obj instanceof PhoneNumber)) {
+//            return false;
+//        }
+//        PhoneNumber phoneNumber = (PhoneNumber) obj;
+//        return phoneNumber.lineNum == lineNum && phoneNumber.prefix == prefix && phoneNumber.areaCode == areaCode;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return super.hashCode();
+//    }
 
     //코드 13-1 가변 상태를 참조하지 않는 클래스용 Clone 메서드(79쪽)
     @Override
@@ -47,9 +47,9 @@ public final class PhoneNumber {
     }
 
     public static void main(String[] args) {
-        Map<PhoneNumber, String> map = new HashMap<>();
-        map.put(new PhoneNumber(707, 867, 5309),"A");
-        System.out.println(map.get(new PhoneNumber(707, 867, 5307)));
+//        Map<PhoneNumber, String> map = new HashMap<>();
+//        map.put(new PhoneNumber(707, 867, 5309),"A");
+//        System.out.println(map.get(new PhoneNumber(707, 867, 5307)));
 
         PhoneNumber phoneNumber = new PhoneNumber(707, 867, 5309);
         Map<PhoneNumber, String> m = new HashMap<>();
